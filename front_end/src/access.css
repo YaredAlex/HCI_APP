@@ -1,0 +1,127 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  cursor: default;
+}
+:root {
+  --primary: #2f8d46;
+  --gray-light: #edecec;
+}
+button {
+  display: block;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+.acc-header {
+  display: flex;
+  padding: 12px 12px;
+  color: white;
+  position: relative;
+  justify-content: center;
+}
+.acc-control {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+#accessibility_window {
+  border: 1px solid black;
+  background-color: var(--article-bg);
+  border-radius: 5px;
+  max-width: 480px;
+  display: none;
+  position: fixed !important;
+  right: 10px;
+  top: 50px;
+  max-height: 90vh;
+  overflow-y: scroll;
+  color: var(--article-text-color);
+  /* padding: 12px; */
+}
+.bg-primary {
+  background-color: var(--primary);
+}
+.bg-gray-light {
+  background-color: var(--gray-light);
+}
+.text-primary {
+  color: var(--primary);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 130px;
+  width: 100%;
+  padding: 8px 4px;
+  row-gap: 12px;
+  border-radius: 5px;
+  background-color: var(--card-background);
+  color: var(--article-text-color);
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s linear;
+}
+.card:hover {
+  border: 2px solid var(--primary);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.active {
+  border: 2px solid var(--primary) !important;
+}
+.img-container {
+  width: 24px;
+  height: 24px;
+}
+.img-container img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
+#accessibility_color,
+#accessibility_content {
+  padding: 12px 12px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.cursor_pointer {
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block !important;
+}
+#floating_btn {
+  border: 10px solid var(--primary);
+  border-radius: 50%;
+  height: 90px;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+}
+#floating_btn span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  border: 1px solid var(--primary);
+}
+.invert-filter {
+  filter: invert(1);
+}

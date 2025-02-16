@@ -1,0 +1,122 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bg-color-1: #0e0f11;
+  --article-bg: #1a1c20;
+  --article-text-color: #eceff2;
+  --border-color: white;
+  --card-background: #0e0f11;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.dark-theme {
+  --bg-color-1: #0e0f11;
+  --article-bg: #1a1c20;
+  --card-background: #0e0f11;
+  --article-text-color: #eceff2;
+  --summary-text-color: #8c90a1;
+  --border-color: white;
+}
+.light-theme {
+  --border-color: #17191c;
+  --bg-color-1: #f4f6f8;
+  --article-bg: #ffffff;
+  --article-text-color: #1d1f25;
+  --card-background: #ffffff;
+}
+body {
+  background-color: var(--bg-color-1);
+}
+input {
+  border-radius: 5px;
+  padding: 8px 12px;
+  color: var(--article-text-color);
+  outline: none;
+  display: block;
+  max-width: 350px;
+  width: 100%;
+  flex-basis: 350px;
+  border: 1px solid var(--border-color) !important;
+  background-color: transparent;
+}
+.accessibility-wrapper {
+  position: fixed;
+  background-color: #17191c;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+.accessibility-options {
+  color: var(--article-text-color);
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  max-width: 1200px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 16px !important;
+}
+.article-container {
+  color: var(--article-text-color);
+  background-color: var(--article-bg);
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 1200px;
+  padding: 24px 32px;
+}
+.theme-option span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+.custom-button {
+  outline: none;
+  max-width: 150px;
+  padding: 8px 12px;
+}
+.font-option {
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 12px;
+  height: fit-content;
+  overflow: hidden;
+}
+.font-option span {
+  padding: 4px 4px;
+}
+.font-option span:nth-child(2) {
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  padding: 4px;
+}
+.font-size-option {
+}
+
+.theme-option .active {
+  border: 1px solid rgb(0, 255, 8);
+}
+.img-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin: 0 auto;
+  max-width: 900px;
+}
+.img-wrapper img {
+  width: 100%;
+  height: auto;
+}
+.more-info img {
+  width: auto;
+}
+.accessibility {
+  font-size: 16px !important;
+}
