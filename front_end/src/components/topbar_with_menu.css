@@ -1,0 +1,119 @@
+.accessibility-wrapper {
+  position: fixed;
+  background-color: #17191c;
+  top: 0;
+  right: 10px;
+  margin-left: auto;
+  width: 400px;
+  z-index: 1000;
+  overflow: visible;
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 1001;
+  overflow: visible;
+}
+.accessibility-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #17191c;
+  color: white;
+  padding: 20px;
+  max-height: calc(100vh - 50px);
+  /* overflow-y: auto; */
+  overflow: visible;
+}
+
+.dropdown-section {
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dropdown-section-content {
+  padding: 10px 0;
+}
+.dropdown-section-content.sub-menu {
+  padding: 10px 12px;
+  position: absolute;
+  left: -250px;
+  background-color: #252527;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 300px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.theme-circle {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.theme-circle.light-theme {
+  background-color: white;
+  border: 1px solid gray;
+}
+
+.theme-circle.dark-theme {
+  background-color: #17191c;
+  border: 1px solid white;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.font-size-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.font-size-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.font-size-value {
+  font-size: 16px;
+  margin: 0 10px;
+}
