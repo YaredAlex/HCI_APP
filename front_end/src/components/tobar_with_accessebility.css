@@ -4,6 +4,10 @@
   top: 0;
   left: 0;
   width: 100vw;
+  right: 0;
+  margin-left: auto;
+  z-index: 1000;
+  overflow: hidden;
 }
 .accessibility-options {
   color: var(--article-text-color);

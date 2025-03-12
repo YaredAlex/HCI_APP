@@ -1,13 +1,11 @@
 import { useState } from "react";
-
 import ReactLoading from "react-loading";
 import "./App.css";
-
 import Accessibility from "./access";
 import axios from "axios";
 import { useArticleContext } from "./context/article_context";
-import TopbarWithAccessebility from "./components/topbar_with_accessebilty";
-import TopbarWithMenu from "./components/topbar_with_menu";
+import RibbonTab from "./components/ribbon_tab";
+
 function App() {
   const [contentUrl, setContentUrl] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -47,9 +45,10 @@ function App() {
       {/* accessibility option bottom-left */}
       <Accessibility />
       {/* Topbar */}
+      <RibbonTab />
       {/* <TopbarWithAccessebility /> */}
       {/* Topbar with menu */}
-      <TopbarWithMenu />
+      {/* <TopbarWithMenu /> */}
       <div className="article-container">
         <div className="d-flex col flex-column align-items-center justify-content-center m-auto gap-2">
           <label htmlFor="search">Search URL</label>

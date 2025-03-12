@@ -70,3 +70,14 @@ input {
 .accessibility {
   font-size: 16px !important;
 }
+.article-container {
+  color: var(--article-text-color);
+  background-color: var(--article-bg);
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 1200px;
+  padding: 24px 32px;
+}
+#search {
+  flex-basis: 50%;
+}

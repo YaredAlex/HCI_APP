@@ -112,6 +112,7 @@ button {
   position: fixed;
   right: 24px;
   bottom: 24px;
+  background-color: var(--article-bg);
 }
 #floating_btn span {
   display: flex;
@@ -124,4 +125,46 @@ button {
 }
 .invert-filter {
   filter: invert(1);
+}
+/* Ensure the window and button appear above other elements */
+#accessibility_window,
+#floating_btn {
+  z-index: 1000;
+}
+
+/* Make the header sticky */
+.acc-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--primary); /* Ensures solid background when sticky */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 500px) {
+  #accessibility_window {
+    width: 90vw; /* Takes 90% of viewport width */
+    right: 5vw; /* Slightly centered from the right */
+    top: 10px; /* Closer to the top */
+    max-width: none; /* Overrides 480px to allow full responsiveness */
+  }
+
+  #accessibility_color,
+  #accessibility_content {
+    padding: 6px; /* Reduced padding */
+    gap: 6px; /* Smaller gap between cards */
+  }
+
+  #floating_btn {
+    height: 60px; /* Smaller button */
+    width: 60px;
+    border-width: 5px; /* Thinner border */
+    right: 12px; /* Closer to edge */
+    bottom: 12px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .card {
+    max-width: 100%;
+  }
 }

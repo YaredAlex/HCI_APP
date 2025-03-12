@@ -1,0 +1,141 @@
+/* Theme variables */
+body.light-theme {
+  --ribbon-bg: #f1f1f1;
+  --ribbon-text: #000;
+  --active-tab-bg: #0078d4;
+  --group-divider: #ccc;
+  --group-label-color: #666;
+}
+
+body.dark-theme {
+  --ribbon-bg: #17191c;
+  --ribbon-text: #fff;
+  --active-tab-bg: #333;
+  --group-divider: #444;
+  --group-label-color: #aaa;
+}
+
+/* Ribbon styling */
+.ribbon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--ribbon-bg);
+  color: var(--ribbon-text);
+  z-index: 900;
+}
+
+/* Tab bar */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5px;
+  border-bottom: 1px solid var(--group-divider);
+}
+
+.tab-bar button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ribbon-text);
+}
+
+.tab-bar button.active {
+  background-color: var(--active-tab-bg);
+  color: #fff;
+}
+
+/* Ribbon content */
+.ribbon-content {
+  display: flex;
+  padding: 10px;
+  overflow-x: auto;
+  overflow: visible;
+  justify-content: center;
+  align-content: center;
+}
+
+/* Group styling */
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 15px;
+  border-right: 1px solid var(--group-divider);
+}
+
+.group:last-child {
+  border-right: none;
+}
+
+.group-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.group-label {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--group-label-color);
+}
+
+/* Button styling */
+button {
+  background: none;
+  border: 1px solid var(--group-divider);
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+  color: var(--ribbon-text);
+}
+
+button:hover {
+  background-color: var(--active-tab-bg);
+  color: #fff;
+}
+
+/* Dropdown styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--ribbon-bg);
+  border: 1px solid var(--group-divider);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-list button {
+  padding: 5px 10px;
+  border: none;
+}
+
+/* Font size controls */
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Article container adjustment */
+.article-container {
+  margin-top: 80px; /* Adjust based on ribbon height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ribbon-content {
+    flex-direction: row;
+  }
+}
