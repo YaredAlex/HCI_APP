@@ -171,23 +171,14 @@ const TopbarWithMenu = ({
                   <div className="font-size-controls">
                     <span
                       className="font-size-button"
-                      onClick={() => {
-                        if (fontSize < 200) {
-                          setFontSize((prev) => prev + 10);
-                          increaseFontSizeByPercentage(fontSize + 10);
-                        }
-                      }}
+                      onClick={increaseFontSizeByPercentage}
                     >
                       <AiOutlinePlus color="white" />
                     </span>
                     <span className="font-size-value">{fontSize}%</span>
                     <span
                       className="font-size-button"
-                      onClick={() => {
-                        if (fontSize > 100) {
-                          decreaseFontSizeByPercentage(fontSize);
-                        }
-                      }}
+                      onClick={decreaseFontSizeByPercentage}
                     >
                       <AiOutlineMinus color="white" />
                     </span>
