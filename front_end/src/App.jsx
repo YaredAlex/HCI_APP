@@ -5,8 +5,26 @@ import Accessibility from "./access";
 import axios from "axios";
 import { useArticleContext } from "./context/article_context";
 import RibbonTab from "./components/ribbon_tab";
+import { BsSend } from "react-icons/bs";
+import ChatWindow from "./components/chat_window";
+import TopbarWithMenu from "./components/topbar_with_menu";
 
 function App() {
+  axios.defaults.baseURL = "http://127.0.0.1:5000";
+  const { showAccessibility } = useArticleContext();
+  return (
+    <main className="d-flex">
+      {/* accessibility option bottom-left */}
+      {showAccessibility ? <Accessibility /> : <></>}
+      <ArticleContent />
+      {/* AI summary and chat */}
+      <ChatWindow />
+    </main>
+  );
+}
+export default App;
+
+const ArticleContent = () => {
   const [contentUrl, setContentUrl] = useState("");
   const [isLoading, setLoading] = useState(false);
   const { changeArticle, isdark } = useArticleContext();
@@ -14,7 +32,7 @@ function App() {
     if (contentUrl == "") console.log(contentUrl);
     setLoading(true);
     axios
-      .post("http://127.0.0.1:5000/api/search", { url: contentUrl })
+      .post("/api/search", { url: contentUrl })
       .then((res) => {
         if (res.data) {
           const articleContainer = document.getElementById("article-container");
@@ -41,11 +59,10 @@ function App() {
       });
   };
   return (
-    <main className="">
-      {/* accessibility option bottom-left */}
-      <Accessibility />
+    <div className="col-9 px-5">
       {/* Topbar */}
       <RibbonTab />
+
       {/* <TopbarWithAccessebility /> */}
       {/* Topbar with menu */}
       {/* <TopbarWithMenu /> */}
@@ -89,8 +106,6 @@ function App() {
           <p className="text-center">Search your GFG Article</p>
         </article>
       </div>
-    </main>
+    </div>
   );
-}
-
-export default App;
+};

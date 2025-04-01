@@ -15,111 +15,20 @@ import {
 } from "react-icons/ai";
 import { useArticleContext } from "../context/article_context";
 
-const TopbarWithMenu = () => {
-  const [fontSize, setFontSize] = useState(100);
-  const [playing, setPlaying] = useState("none");
-  const [utterance, setUtterance] = useState(new SpeechSynthesisUtterance());
-  const [originalFontSizes, _] = useState(new Map());
+const TopbarWithMenu = ({
+  playing,
+  speak,
+  pauseSpeech,
+  playSpeech,
+  resetSpeech,
+  changeFontFamily,
+  fontSize,
+  increaseFontSizeByPercentage,
+  decreaseFontSizeByPercentage,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
-  const { isdark, toggleIsDark, article } = useArticleContext();
-  useEffect(() => {
-    const allElements = document.querySelectorAll("*");
-    allElements.forEach((element) => {
-      const computedStyle = window.getComputedStyle(element);
-      const currentFontSize = computedStyle.fontSize;
-      // Store original font size if not already stored
-      if (!originalFontSizes.has(element)) {
-        originalFontSizes.set(element, currentFontSize);
-      }
-    });
-  }, []);
-
-  // Previous theme and font-related useEffects and functions remain the same
-  useEffect(() => {
-    if (isdark) {
-      document.body.classList.remove("light-theme");
-      document.body.classList.add("dark-theme");
-    } else {
-      document.body.classList.add("light-theme");
-      document.body.classList.remove("dark-theme");
-    }
-  }, [isdark]);
-
-  const fontFamily = [
-    "'Georgia', 'Times New Roman', Times, serif",
-    "'Arial', 'Helvetica Neue', Helvetica, sans-serif",
-    "'OpenDyslexic', 'Comic Sans MS', 'Arial', sans-serif",
-  ];
-  //
-
-  // Previous speech and font-related functions remain the same
-  function resetSpeech() {
-    setPlaying("none");
-    speechSynthesis.cancel();
-  }
-
-  function speak() {
-    setPlaying("on");
-    speechSynthesis.resume();
-    utterance.text = article;
-    const voices = speechSynthesis.getVoices();
-    utterance.voice = voices[0];
-    speechSynthesis.speak(utterance);
-  }
-
-  function pauseSpeech() {
-    setPlaying("pause");
-    speechSynthesis.pause();
-  }
-
-  function playSpeech() {
-    setPlaying("on");
-    speechSynthesis.resume();
-  }
-
-  const changeFontFamily = (index) => {
-    document.body.style.fontFamily = fontFamily[index];
-    setOpenSubMenu(null);
-  };
-
-  function increaseFontSizeByPercentage(percentage) {
-    const allElements = document.querySelectorAll("*");
-    allElements.forEach((element) => {
-      if (!element.classList.contains("accessibility")) {
-        const currentFontSize = window.getComputedStyle(element).fontSize;
-        const currentSizeInPixels = parseFloat(currentFontSize) / 17;
-        const newFontSize =
-          currentSizeInPixels * (1 + (percentage - 100) / 100);
-        element.style.fontSize = `${newFontSize}rem`;
-      }
-    });
-  }
-
-  function decreaseFontSizeByPercentage(percentage) {
-    if (percentage <= 110) {
-      resetFontSizes();
-      return;
-    }
-
-    const allElements = document.querySelectorAll("*");
-    allElements.forEach((element) => {
-      if (!element.classList.contains("accessibility")) {
-        const currentFontSize = window.getComputedStyle(element).fontSize;
-        const currentSizeInPixels = parseFloat(currentFontSize) / 17;
-        const newFontSize =
-          currentSizeInPixels / (1 + (percentage - 100) / 100);
-        element.style.fontSize = `${newFontSize}rem`;
-      }
-    });
-  }
-
-  function resetFontSizes() {
-    originalFontSizes.forEach((fontSize, element) => {
-      element.style.fontSize = fontSize;
-    });
-    originalFontSizes.clear();
-  }
+  const { isdark, toggleIsDark } = useArticleContext();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -276,7 +185,6 @@ const TopbarWithMenu = () => {
                       className="font-size-button"
                       onClick={() => {
                         if (fontSize > 100) {
-                          setFontSize((prev) => prev - 10);
                           decreaseFontSizeByPercentage(fontSize);
                         }
                       }}

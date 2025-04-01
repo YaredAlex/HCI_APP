@@ -1,10 +1,7 @@
 .accessibility-wrapper {
-  position: fixed;
   background-color: #17191c;
-  top: 0;
-  right: 10px;
-  margin-left: auto;
-  width: 400px;
+  position: absolute;
+  right: 20px;
   z-index: 1000;
   overflow: visible;
 }
@@ -19,9 +16,7 @@
 }
 .accessibility-dropdown {
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
+  right: 0;
   background-color: #17191c;
   color: white;
   padding: 20px;

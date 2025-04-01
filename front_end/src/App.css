@@ -70,6 +70,8 @@ input {
 .accessibility {
   font-size: 16px !important;
 }
+.main-container {
+}
 .article-container {
   color: var(--article-text-color);
   background-color: var(--article-bg);

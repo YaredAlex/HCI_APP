@@ -17,7 +17,7 @@ body.dark-theme {
 
 /* Ribbon styling */
 .ribbon {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -33,6 +33,7 @@ body.dark-theme {
   flex-wrap: wrap;
   padding: 5px;
   border-bottom: 1px solid var(--group-divider);
+  position: relative;
 }
 
 .tab-bar button {
@@ -126,11 +127,6 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-/* Article container adjustment */
-.article-container {
-  margin-top: 80px; /* Adjust based on ribbon height */
 }
 
 /* Responsive adjustments */

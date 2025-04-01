@@ -8,17 +8,20 @@ import {
   AiOutlineInfoCircle,
   AiOutlineDown,
   AiOutlineRight,
+  AiOutlineUp,
 } from "react-icons/ai";
 import { BsSun, BsMoon } from "react-icons/bs";
 import "./ribbon_tab.css";
+import { useArticleContext } from "../context/article_context";
+import TopbarWithMenu from "./topbar_with_menu";
 const Ribbon = () => {
   const [fontSize, setFontSize] = useState(100); // Font size percentage
   const [playing, setPlaying] = useState("none"); // Text-to-speech state
   const [utterance] = useState(new SpeechSynthesisUtterance());
   const [originalFontSizes] = useState(new Map());
-  const [activeTab, setActiveTab] = useState("Home");
-  const [isdark, setIsDark] = useState(false); // Theme state (simplified, assuming no context)
-
+  const [activeTab, setActiveTab] = useState("Home"); // Theme state (simplified, assuming no context)
+  const { showAccessibility, toggleAccessibility, isdark, toggleIsDark } =
+    useArticleContext();
   // Store original font sizes on mount
   useEffect(() => {
     const articleContainer = document.querySelector(".article-container");
@@ -182,10 +185,10 @@ const Ribbon = () => {
   const ViewPanel = () => (
     <div className="panel">
       <Group label="Theme">
-        <button title="Light theme" onClick={() => setIsDark(false)}>
+        <button title="Light theme" onClick={() => toggleIsDark(false)}>
           <BsSun />
         </button>
-        <button title="Dark theme" onClick={() => setIsDark(true)}>
+        <button title="Dark theme" onClick={() => toggleIsDark(true)}>
           <BsMoon />
         </button>
       </Group>
@@ -226,6 +229,12 @@ const Ribbon = () => {
         >
           <AiOutlineInfoCircle />
         </button>
+        <button
+          title="Show/Hide accessibility"
+          onClick={() => toggleAccessibility(!showAccessibility)}
+        >
+          {showAccessibility ? "Hide accessibility" : "Show accesibility"}
+        </button>
       </Group>
     </div>
   );
@@ -248,9 +257,20 @@ const Ribbon = () => {
             onClick={() => setActiveTab(tab.name)}
           >
             {tab.name}
-            {activeTab === tab.name ? <AiOutlineDown /> : <AiOutlineRight />}
+            {activeTab === tab.name ? <AiOutlineUp /> : <AiOutlineDown />}
           </button>
         ))}
+        <TopbarWithMenu
+          playing={playing}
+          speak={speak}
+          pauseSpeech={pauseSpeech}
+          playSpeech={playSpeech}
+          resetSpeech={resetSpeech}
+          changeFontFamily={changeFontFamily}
+          fontSize={fontSize}
+          increaseFontSizeByPercentage={increaseFontSize}
+          decreaseFontSizeByPercentage={decreaseFontSize}
+        />
       </div>
       <div className="ribbon-content">
         {tabs.find((tab) => tab.name === activeTab).panel}
